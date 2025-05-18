@@ -30,4 +30,28 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
-.vscode/
+.vscode
+
+# Java
+*.class
+*.jar
+*.war
+*.log
+
+# Build
+/target/
+/build/
+
+# IDEs
+/.idea/
+/*.iml
+/.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Credenciales
+application.properties
+application.yml
+.env
