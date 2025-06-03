@@ -3,6 +3,7 @@ package com.springboot.entity;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -16,12 +17,14 @@ public class Rol {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int rol_id;
+
+	@Column(nullable = false, unique = true)
 	String rol;
+
 	@OneToMany(mappedBy = "rol", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	Set<Usuario> usuario;
 
 	public Rol() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Rol(int rol_id, String rol) {

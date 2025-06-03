@@ -26,11 +26,9 @@ public class Propiedad {
 	private Set<Cuarto> cuarto;
 	
 	public Propiedad() {
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Propiedad(int propiedad_id, String reglas, String descripcion, String direccion, boolean estado_verificacion,
-			Cuarto cuarto) {
+	public Propiedad(int propiedad_id, String reglas, String descripcion, String direccion, boolean estado_verificacion) {
 		this.propiedad_id = propiedad_id;
 		this.reglas = reglas;
 		this.descripcion = descripcion;

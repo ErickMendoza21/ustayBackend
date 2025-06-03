@@ -1,11 +1,16 @@
 package com.springboot.entity;
 
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Cuarto {
@@ -26,12 +31,24 @@ public class Cuarto {
 	@JoinColumn(name = "propiedad_id", nullable = false)
 	private Propiedad propiedad;
 
+	@ManyToOne
+	@JoinColumn(name = "periodo_id", nullable = false)
+	private Periodo periodo;
+
+	@ManyToOne
+	@JoinColumn(name = "tipo_id", nullable = false)
+	private Tipo tipo;
+	
+	@OneToMany(mappedBy = "cuarto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Favorito> favorito;
+	
 	public Cuarto() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public Cuarto(double precio, String nombre, String dimensiones, int n_piso, int n_cuarto, String descripcion,
-			boolean disponibilidad, String informacion_adicional, Propiedad propiedad) {
+	public Cuarto(int cuarto_id, double precio, String nombre, String dimensiones, int n_piso, int n_cuarto,
+			String descripcion, boolean disponibilidad, String informacion_adicional, Propiedad propiedad,
+			Periodo periodo, Tipo tipo) {
+		this.cuarto_id = cuarto_id;
 		this.precio = precio;
 		this.nombre = nombre;
 		this.dimensiones = dimensiones;
@@ -41,7 +58,11 @@ public class Cuarto {
 		this.disponibilidad = disponibilidad;
 		this.informacion_adicional = informacion_adicional;
 		this.propiedad = propiedad;
+		this.periodo = periodo;
+		this.tipo = tipo;
 	}
+
+
 
 	public int getCuarto_id() {
 		return cuarto_id;
@@ -123,4 +144,21 @@ public class Cuarto {
 		this.propiedad = propiedad;
 	}
 
+	public Periodo getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(Periodo periodo) {
+		this.periodo = periodo;
+	}
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+	
+	
 }

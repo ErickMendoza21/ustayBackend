@@ -50,6 +50,7 @@ public class CuartoService {
 	    newCuarto.setNombre(cuarto.getNombre());
 	    newCuarto.setPrecio(cuarto.getPrecio());
 	    newCuarto.setPropiedad(cuarto.getPropiedad());
+	    newCuarto.setPeriodo(cuarto.getPeriodo());
 
 	    return cuartoRepository.save(newCuarto);
 	}
